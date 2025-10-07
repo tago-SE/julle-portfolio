@@ -19,5 +19,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Show git config
+        run: git config --list
+
       - name: Deploy
         run: npm run deploy -- -m "Deploying to GitHub Pages"
