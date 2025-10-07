@@ -27,27 +27,27 @@ export const ArtCarousel = () => {
   }, [nextSlide]);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden bg-background">
       {/* Artwork Display */}
-      <div className="relative h-full w-full">
+      <div className="relative h-full w-full flex items-center justify-center p-8 md:p-16">
         {artworks.map((artwork, index) => (
           <div
             key={artwork.id}
-            className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+            className={`absolute transition-all duration-700 ease-in-out ${
               index === currentIndex
-                ? "opacity-100 scale-100"
-                : index ===
-                  (currentIndex - 1 + artworks.length) % artworks.length
-                ? "opacity-0 scale-95 -translate-x-full"
-                : "opacity-0 scale-95 translate-x-full"
+                ? 'opacity-100 scale-100'
+                : index === (currentIndex - 1 + artworks.length) % artworks.length
+                ? 'opacity-0 scale-95 -translate-x-full'
+                : 'opacity-0 scale-95 translate-x-full'
             }`}
           >
-            <img
-              src={artwork.image}
-              alt={artwork.title}
-              className="h-full w-full object-cover"
-            />
-            <div className="gallery-gradient absolute inset-0" />
+            <div className="relative max-h-[70vh] max-w-[90vw] md:max-w-[80vw] bg-card p-4 md:p-8 rounded-lg shadow-2xl">
+              <img
+                src={artwork.image}
+                alt={artwork.title}
+                className="max-h-[60vh] w-auto object-contain rounded"
+              />
+            </div>
           </div>
         ))}
       </div>
@@ -96,8 +96,8 @@ export const ArtCarousel = () => {
             }}
             className={`h-1.5 rounded-full transition-all duration-500 ${
               index === currentIndex
-                ? "w-12 bg-primary"
-                : "w-6 bg-muted hover:bg-muted-foreground"
+                ? 'w-12 bg-primary'
+                : 'w-6 bg-muted hover:bg-muted-foreground'
             }`}
             aria-label={`Go to artwork ${index + 1}`}
           />
