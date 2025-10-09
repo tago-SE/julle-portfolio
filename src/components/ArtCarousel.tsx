@@ -1,30 +1,37 @@
-import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { artworks, ENABLE_AUTO_NEXT_PICTURE } from "@/config";
+import { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import art1 from '@/assets/art-1.jpg';
+import art2 from '@/assets/art-2.jpg';
+import art3 from '@/assets/art-3.jpg';
+
+const artworks = [
+  { id: 1, image: art1, title: 'Reflection of Fire', year: '2024' },
+  { id: 2, image: art2, title: 'Ethereal Valley', year: '2024' },
+  { id: 3, image: art3, title: 'Color Grid Dreams', year: '2024' },
+];
 
 export const ArtCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const nextSlide = useCallback(() => {
+  const nextSlide = () => {
     if (isAnimating) return;
     setIsAnimating(true);
     setCurrentIndex((prev) => (prev + 1) % artworks.length);
     setTimeout(() => setIsAnimating(false), 600);
-  }, [isAnimating]);
+  };
 
-  const prevSlide = useCallback(() => {
+  const prevSlide = () => {
     if (isAnimating) return;
     setIsAnimating(true);
     setCurrentIndex((prev) => (prev - 1 + artworks.length) % artworks.length);
     setTimeout(() => setIsAnimating(false), 600);
-  }, [isAnimating]);
+  };
 
   useEffect(() => {
-    if (!ENABLE_AUTO_NEXT_PICTURE) return;
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
-  }, [nextSlide]);
+  }, []);
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-background">

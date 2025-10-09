@@ -1,4 +1,7 @@
-import { Palette, Sparkles, Heart } from 'lucide-react';
+import { Palette, Sparkles, Heart, ExternalLink } from 'lucide-react';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
+import profileImage from '@/assets/julian-profile.jpg';
 
 export const AboutSection = () => {
   return (
@@ -12,19 +15,57 @@ export const AboutSection = () => {
           <div className="h-1 w-24 bg-primary" />
         </div>
 
+        {/* Profile Section */}
+        <div className="mb-16 flex flex-col items-center gap-8 animate-fade-in md:flex-row md:items-start">
+          <Avatar className="h-48 w-48 border-4 border-primary/50 shadow-[0_0_30px_rgba(var(--primary),0.3)]">
+            <AvatarImage src={profileImage} alt="Julian Redaelli" />
+            <AvatarFallback>JR</AvatarFallback>
+          </Avatar>
+          <div className="flex-1 text-center md:text-left">
+            <h3 className="mb-2 text-4xl font-bold text-foreground">Julian Redaelli</h3>
+            <p className="mb-4 text-xl text-primary">Designer & Visual Artist</p>
+            <div className="flex flex-wrap justify-center gap-3 md:justify-start">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="border-primary/50 hover:bg-primary/20"
+                asChild
+              >
+                <a href="https://www.imdb.com/name/nm14190793/" target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  IMDB
+                </a>
+              </Button>
+              <Button 
+                variant="outline" 
+                size="sm"
+                className="border-primary/50 hover:bg-primary/20"
+                asChild
+              >
+                <a href="http://nischmanagement.se/julian-redaelli" target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  Model Portfolio
+                </a>
+              </Button>
+            </div>
+          </div>
+        </div>
+
         {/* Content Grid */}
         <div className="grid gap-12 md:grid-cols-2 lg:gap-16">
           {/* Main Bio */}
           <div className="space-y-6 animate-slide-up">
             <p className="text-lg leading-relaxed text-foreground md:text-xl">
-              Welcome to my creative sanctuary. I'm a contemporary artist exploring the intersection 
-              of emotion, color, and form. Each piece is a journey through landscapes both real and imagined, 
-              inviting viewers to discover their own narratives within the canvas.
+              Julian Redaelli is a multidisciplinary designer and visual artist whose work seamlessly blends 
+              the raw energy of punk aesthetics with refined contemporary design principles. Based between 
+              Milan and Berlin, Julian creates provocative imagery that challenges conventional beauty standards 
+              while maintaining an unmistakable sense of style and sophistication.
             </p>
             <p className="text-lg leading-relaxed text-muted-foreground">
-              My work draws inspiration from the natural world, urban environments, and the intangible 
-              spaces between memory and dreams. Through bold compositions and vibrant palettes, I seek 
-              to create moments of contemplation and wonder.
+              With a background spanning fashion design, photography, and digital art, Julian's portfolio 
+              defies categorization. Each piece serves as a visual manifesto—bold, unapologetic, and 
+              deeply personal. His work has been featured in underground galleries and mainstream publications 
+              alike, bridging the gap between counterculture and high art.
             </p>
           </div>
 
