@@ -26,39 +26,55 @@ This template provides a minimal setup to get React working in Vite with HMR and
   ```
 - This will install and use the latest LTS version of Node.js (which includes npm).
 
-### 2. Clone this repository  
+### 2. Clone this repository
+
    Open a terminal and run:
    ```
    git clone https://github.com/tago-se/julle-portfolio.git
    cd julle-portfolio
    ```
 
-### 3. Install dependencies  
+### 3. Install dependencies
+
    In the project folder, run:
    ```
    npm install
    ```
 
-### 4. Start the development server  
+### 4. Start the development server
+
    ```
    npm run dev
    ```
    Then open the URL shown in your terminal (usually [http://localhost:5173](http://localhost:5173)) in your browser.
 
-### 5. Build for production  
-   ```
-   npm run build
-   ```
+### 5. Build for production
 
-### 6. Preview the production build  
-   ```
-   npm run preview
-   ```
+```bash
+npm run build
+```
 
-### 7 Deploying to Github Pages
+### 6. Preview the production build
+
+```bash
+npm run preview
+```
+
+### 7. Running with Docker
+
+If you prefer to serve the app from a containerized build, run:
+
+```bash
+docker build -t julle-portfolio .
+docker run -p 3000:3000 julle-portfolio
+```
+The first command builds the multi-stage image defined in `Dockerfile`, and the second runs it with port 80 exposed on the host.
+
+### 8 Deploying to Github Pages
 
 There is a GitHub Action which does this but if you need to do it manually run:
-```
+
+```bash
 npm run deploy -- -m "DEPLOY_MESSAGE"
 ```
 This will build and publish your site to the `gh-pages` branch.
